@@ -346,7 +346,7 @@ fuzz_target!(|data: &[u8]| {
 
 &nbsp;
 
-# Getting Started - Download ~2-4 hours :/
+# Getting Started - Download ~2-4 hours, if not more :/
 
 &nbsp;
 
