@@ -1,6 +1,6 @@
 #	***Android Services in Rust - pocket dict*** 
 
-
+&nbsp;
 
 ###	Interacting with services on the device 
 
@@ -12,7 +12,7 @@ $ adb shell service --help # sending commands to services for testing
 
 ```
 
-
+&nbsp;
 
 # AIDL Interfaces
 
@@ -26,7 +26,7 @@ interface ITeleport {
     
 ```
 
-
+&nbsp;
 
 ### Importing Types
 
@@ -37,7 +37,7 @@ use my_package::aidl::my::package::IFoo;
 
 ```
 
-
+&nbsp;
 
 ### Implementing Types
 
@@ -61,7 +61,7 @@ In Rust Backend:
     
 ```
 
-
+&nbsp;
 
 ###	Registering and getting services
 
@@ -87,7 +87,7 @@ fn main() {
 
 ```
 
-
+&nbsp;
 
 ### Debugging API for services:
 
@@ -98,7 +98,7 @@ fn dump(&self, mut file: &File, args: &[&CStr]) -> binder::Result<()>
     
 ```
 
-
+&nbsp;
 
 ## Thread Management
 
@@ -111,13 +111,13 @@ binder::ProcessState::join_thread_pool();
 
 ```
 
-
+&nbsp;
 
 ## 	Reserved Names
 
 **For Rust, the field or type is renamed using the "raw identifier" syntax, accessible using the ```r#``` prefix.**
 
-
+&nbsp;
 
 
 ##	Registering a service
@@ -147,7 +147,7 @@ lazyRegistrar.registerService(service, serviceName);
 
 ```servicemanager``` communicates with ```LazyServiceRegistrar``` to shut down services based on their reference counts.
 
-
+&nbsp;
 
 ## Dynamic AIDL
 
@@ -167,7 +167,7 @@ These options do the following:
 - `disabled`: Prevents the service from automatically starting at boot.
 - `oneshot`: Prevents the service from automatically restarting each time it is stopped.
 
-
+&nbsp;
 
 ## Annotations
 
@@ -196,12 +196,14 @@ Below is the list of pre-defined AIDL annotations:
 | `FixedSize`                | 12                       |
 | `Descriptor`               | 12                       |
 
-
+&nbsp;
 
 #### `nullable`
 
 `nullable` declares that the value of the annotated entity may not be provided.
 This annotation can only be attached to method return types, method parameters, and parcelable fields.
+
+&nbsp;
 
 #### `VintfStability`
 
@@ -242,7 +244,7 @@ parcelable Data {...}
 
 In addition, the AIDL files defining types annotated with `VintfStability` can only be built using the `aidl_interface` Soong module type, with the `stability` property set to `"vintf"`.
 
-
+&nbsp;
 
 #### `backing`
 
@@ -253,7 +255,7 @@ The `Backing` annotation specifies the storage type of an AIDL enum type.
 enum Color { RED, BLUE, }
 ```
 
-
+&nbsp;
 
 #### `JavaOnlyStableParcelable`
 
@@ -291,7 +293,7 @@ parcelable AnotherData {
 }
 ```
 
-
+&nbsp;
 
 #### `JavaDerive`
 
@@ -311,13 +313,13 @@ The annotation requires additional parameters to control what to generate. The s
 
 - `toString=true` generates `toString` method that prints the name of the type and fields. For example: `Data{number: 42, str: foo}`
 
-  
+  &nbsp;
 
 #### `hide` in comments
 
 The AIDL compiler recognizes `@hide` in comments and passes it through to Java output for metalava to pickup. This comment ensures that the Android build system knows that AIDL APIs are not SDK APIs.
 
-
+&nbsp;
 
 ## AIDL Fuzzing
 
@@ -340,13 +342,13 @@ fuzz_target!(|data: &[u8]| {
 });
 ```
 
+&nbsp;
 
-
-
+&nbsp;
 
 # Getting Started - Download ~2-4 hours :/
 
-
+&nbsp;
 
 ### Initializing Repo
 
@@ -390,7 +392,7 @@ fuzz_target!(|data: &[u8]| {
    repo sync -c -j8
    ```
 
-
+&nbsp;
 
 ### Launching emulator
 
@@ -399,21 +401,21 @@ Note: I use the server's noVNC, because the `ssh -X` does not support screen mir
 Now the steps are simple:
 
 ```bash
-$ cd ~/WORKING_DIRECTORY
+cd ~/WORKING_DIRECTORY
 
-$ source build/envsetup.sh
+source build/envsetup.sh
 
 // Mentioned above why you use `sdk` and not `aosp`
-$ lunch sdk_car_x86_64-userdebug
+lunch sdk_car_x86_64-userdebug
 
-$ make	
+make	
 // or `m` in subfolders
 ```
 
 To run the emulator:
 
 ```bash
-$ emulator
+emulator
 	-wipe-data
 	-selinux permissive
 	-sysdir $ANDROID_PRODUCT_OUT
@@ -425,17 +427,19 @@ $ emulator
 	-encryption-key $ANDROID_PRODUCT_OUT/encryptionkey.img
 ```
 
-
+&nbsp;
 
 ### For Android.bp - soong build
 
 https://ci.android.com/builds/submitted/8206919/linux/latest/view/soong_build.html
 
+&nbsp;
 
-
-
+&nbsp;
 
 Now we finally move to...
 
 # Rust in Android
+
+&nbsp;
 
